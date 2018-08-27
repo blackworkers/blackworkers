@@ -19,6 +19,13 @@ setup() {
   fi
 }
 
+setBashrc () {
+  echo "alias python=\"python3.6\"
+alias pip=\"pip3.6\"
+alias commit=\"/bin/bash /home/bwadmin/blackworkersapp/git_commit.sh\"
+alias cda=\"cd /home/bwadmin/blackworkersapp\"" >> ~/.bashrc
+}
+
 createDirectories () {
   mkdir ~/blackworkers/
   mkdir ~/blackworkers/cronlogs/
