@@ -36,3 +36,6 @@ sudo pip3.6 install pulp
 
 # Install scrapy
 sudo pip3.6 install scrapy
+
+# Install Pika client for Reddis
+sudo pip3.6 install pika
