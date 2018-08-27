@@ -15,9 +15,10 @@ class Post(Item):
     caption = Field()
     loc_id = Field()
     loc_lat = Field()
-    loc_lon = Field()
+    loc_long = Field()
     loc_name = Field()
     owner_id = Field()
     owner_name = Field()
     taken_at_timestamp = Field()
+    scraped_timestamp = Field()
     pass

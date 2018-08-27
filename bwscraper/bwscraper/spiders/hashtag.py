@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
 import scrapy
 import json
 import time
 import os.path
+import datetime
 
 from scrapy.exceptions import CloseSpider
 
-from scrapy_instagram.items import Post
+from bwscraper.items import Post
 
 class InstagramSpider(scrapy.Spider):
     name = "hashtag"  # Name of the Spider, required value
@@ -19,9 +19,9 @@ class InstagramSpider(scrapy.Spider):
     #     self.logger.info('Total Elements %s', response.url)
 
     def __init__(self, hashtag=''):
-        self.hashtag = hashtag
+        self.hashtag = "blackworkers"
         if hashtag == '':
-            self.hashtag = input("Name of the hashtag? ")
+            self.hashtag = "blackworkers"
         self.start_urls = ["https://www.instagram.com/explore/tags/"+self.hashtag+"/?__a=1"]
         self.date = time.strftime("%d-%m-%Y_%H")
         self.checkpoint_path = './scraped/%s/%s/.checkpoint' % (self.name, self.hashtag)
@@ -40,7 +40,7 @@ class InstagramSpider(scrapy.Spider):
 
     # Method for parsing a hastag
     def parse_htag(self, response):
- 
+
         #Load it as a json object
         graphql = json.loads(response.text)
         has_next = graphql['graphql']['hashtag']['edge_hashtag_to_media']['page_info']['has_next_page']
@@ -66,7 +66,7 @@ class InstagramSpider(scrapy.Spider):
 
     def checkAlreadyScraped(self,shortcode):
         return self.last_crawled == shortcode
-           
+
     def parse_post(self, response):
         graphql = json.loads(response.text)
         media = graphql['graphql']['shortcode_media']
@@ -78,28 +78,36 @@ class InstagramSpider(scrapy.Spider):
             yield request
         else:
             media['location'] = {}
-            yield self.makePost(media)         
+            yield self.makePost(media)
 
     def parse_post_location(self, response):
         media = response.meta['media']
         location = json.loads(response.text)
-        location = location['location']
+        location['name'] = location['graphql']['location']['name']
+        location['id'] = location['graphql']['location']['id']
+        location['lat'] = location['graphql']['location']['lat']
+        location['long']= location['graphql']['location']['lng']
+        print("#####################", location['lat'], location['long'])
+        #print("$$$$$$$$$$$$$$$$$$$$$$$", location_name, location_id, location_lat, location_long)
         media['location'] = location
         yield self.makePost(media)
 
     def makePost(self, media):
+        scraped_timestamp=(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S:%MS"))
+        print("########### SCRAPED TIMESTAMP: ", scraped_timestamp)
         location = media['location']
         caption = ''
         if len(media['edge_media_to_caption']['edges']):
             caption = media['edge_media_to_caption']['edges'][0]['node']['text']
         return Post(id=media['id'],
+                    scraped_timestamp=str(scraped_timestamp),
                     shortcode=media['shortcode'],
                     caption=caption,
                     display_url=media['display_url'],
-                    loc_id=location.get('id', 0),
-                    loc_name=location.get('name',''),
-                    loc_lat=location.get('lat',0),
-                    loc_lon=location.get('lng',0),
+                    loc_id=location.get('id'),
+                    loc_name=location.get('name'),
+                    loc_lat=location.get('lat'),
+                    loc_long=location.get('long'),
                     owner_id =media['owner']['id'],
                     owner_name = media['owner']['username'],
                     taken_at_timestamp= media['taken_at_timestamp'])
