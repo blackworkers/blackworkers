@@ -39,3 +39,12 @@ sudo pip3.6 install scrapy
 
 # Install Pika client for Reddis
 sudo pip3.6 install pika
+
+# Install Postgres Module
+sudo pip3.6 install psycopg2
+
+# Install newer binary for Postgres
+sudo pip3.6 install psycopg2-binary
+
+# Install reverse_geocode
+sudo pip3.6 install reverse_geocode

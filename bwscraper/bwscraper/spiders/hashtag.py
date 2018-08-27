@@ -18,8 +18,9 @@ class InstagramSpider(scrapy.Spider):
     # def closed(self, reason):
     #     self.logger.info('Total Elements %s', response.url)
 
-    def __init__(self, hashtag=''):
-        self.hashtag = "blackworkers"
+    def __init__(self, hashtag='',*args,**kwargs):
+        super(InstagramSpider, self).__init__(*args, **kwargs)
+        self.hashtag = hashtag
         if hashtag == '':
             self.hashtag = "blackworkers"
         self.start_urls = ["https://www.instagram.com/explore/tags/"+self.hashtag+"/?__a=1"]
