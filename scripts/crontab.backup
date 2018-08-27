@@ -1,0 +1,3 @@
+*/5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackwork' >> /home/bwadmin/cron.log
+*/5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackworkers' >> /home/bwadmin/cron.log
+*/5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackworkerssubmission' >> /home/bwadmin/cron.log

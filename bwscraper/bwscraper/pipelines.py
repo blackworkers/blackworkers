@@ -47,7 +47,7 @@ class BwscraperPipeline(object):
 
             location = reverse_geocode(item['loc_lat'],item['loc_long'])
             #location = []
-            cur.execute("INSERT INTO staging.posts_raw VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (item['id'],item['scraped_timestamp'],item['shortcode'],item['caption'],
+            cur.execute("INSERT INTO staging.posts_raw VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (item['job_hashtag'], item['id'],item['scraped_timestamp'],item['shortcode'],item['caption'],
             item['display_url'],item['loc_id'],item['loc_name'],item['loc_lat'],item['loc_long'],item['owner_id'],item['owner_name'],item['likes'],item['taken_at_timestamp'],location['city'],location['state'],location['country'],etl_time))
             conn.commit()
             cur.close()

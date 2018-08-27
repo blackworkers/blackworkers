@@ -19,16 +19,18 @@ class InstagramSpider(scrapy.Spider):
     #     self.logger.info('Total Elements %s', response.url)
 
     def __init__(self, hashtag='',*args,**kwargs):
+        global job_hashtag
         super(InstagramSpider, self).__init__(*args, **kwargs)
         self.hashtag = hashtag
+        job_hashtag = hashtag
         if hashtag == '':
             self.hashtag = "blackworkers"
         self.start_urls = ["https://www.instagram.com/explore/tags/"+self.hashtag+"/?__a=1"]
         self.date = time.strftime("%d-%m-%Y_%H")
         self.checkpoint_path = './scraped/%s/%s/.checkpoint' % (self.name, self.hashtag)
-        self.readCheackpoint()
+        self.readCheckpoint()
 
-    def readCheackpoint(self):
+    def readCheckpoint(self):
         filename = self.checkpoint_path
         if not os.path.exists(filename):
             self.last_crawled = ''
@@ -112,4 +114,5 @@ class InstagramSpider(scrapy.Spider):
                     owner_id =media['owner']['id'],
                     owner_name = media['owner']['username'],
                     likes = media['edge_media_preview_like']['count'],
-                    taken_at_timestamp= media['taken_at_timestamp'])
+                    taken_at_timestamp= media['taken_at_timestamp'],
+                    job_hashtag = job_hashtag)

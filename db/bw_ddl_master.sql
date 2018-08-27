@@ -3,6 +3,7 @@ CREATE DATABASE bw;
 CREATE SCHEMA staging;
 
 CREATE TABLE staging.posts_raw (
+job_hashtag text,
 post_id text,
 scraped_timestamp text,
 shortcode text,
