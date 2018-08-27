@@ -1,6 +1,6 @@
 #!/bin/bash
 read -p "Commit description: " desc
-git add . && \
-git add -u && \
-git commit -m "$desc" && \
-git push origin head
+git add -a
+git commit -m "$desc" &&
+git push origin master
+
