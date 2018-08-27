@@ -83,18 +83,18 @@ class InstagramSpider(scrapy.Spider):
     def parse_post_location(self, response):
         media = response.meta['media']
         location = json.loads(response.text)
+        #print("#####################LOCATION##############", location)
         location['name'] = location['graphql']['location']['name']
         location['id'] = location['graphql']['location']['id']
         location['lat'] = location['graphql']['location']['lat']
         location['long']= location['graphql']['location']['lng']
-        print("#####################", location['lat'], location['long'])
         #print("$$$$$$$$$$$$$$$$$$$$$$$", location_name, location_id, location_lat, location_long)
         media['location'] = location
         yield self.makePost(media)
 
     def makePost(self, media):
         scraped_timestamp=(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S:%MS"))
-        print("########### SCRAPED TIMESTAMP: ", scraped_timestamp)
+        #print("########### SCRAPED TIMESTAMP: ", scraped_timestamp)
         location = media['location']
         caption = ''
         if len(media['edge_media_to_caption']['edges']):
@@ -110,4 +110,5 @@ class InstagramSpider(scrapy.Spider):
                     loc_long=location.get('long'),
                     owner_id =media['owner']['id'],
                     owner_name = media['owner']['username'],
+                    likes = media['edge_media_preview_like']['count'],
                     taken_at_timestamp= media['taken_at_timestamp'])

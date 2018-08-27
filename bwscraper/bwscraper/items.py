@@ -21,4 +21,5 @@ class Post(Item):
     owner_name = Field()
     taken_at_timestamp = Field()
     scraped_timestamp = Field()
+    likes = Field()
     pass

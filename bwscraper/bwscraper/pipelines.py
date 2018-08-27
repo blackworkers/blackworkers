@@ -8,4 +8,5 @@
 
 class BwscraperPipeline(object):
     def process_item(self, item, spider):
+        print("################### We are now in the process items pipeline!!!")
         return item
