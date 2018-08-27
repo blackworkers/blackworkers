@@ -2,7 +2,7 @@
 set -e
 
 # Setup correct repo
-sudo yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+#sudo yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 
 # Updated Yum
 sudo yum -y update
@@ -14,19 +14,19 @@ sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
 python3.6 -V
 
 # Make Python 3.6 the default for the DSACC account interactive shell
-echo 'alias python="python3.6"' >> /home/gpadmin/.bash_profile
+echo 'alias python="python3.6"' >> ~/.bash_profile
 
 # Make Python 3.6 the default for the DSACC account non-interactive shell
-echo 'alias python="python3.6"' >> /home/gpadmin/.bashrc
+echo 'alias python="python3.6"' >> ~/.bashrc
 
 # Make Pip 3.6 the default for the DSACC account interactive shell
-echo 'alias pip="pip3.6"' >> /home/gpadmin/.bash_profile
+echo 'alias pip="pip3.6"' >> ~/.bash_profile
 
 # Make Pip 3.6 the default for the DSACC account non-interactive shell
-echo 'alias pip="pip3.6"' >> /home/gpadmin/.bashrc
+echo 'alias pip="pip3.6"' >> ~/.bashrc
 
 # Source .bashrc
-source /home/gpadmin/.bashrc
+source ~/.bashrc
 
 # Upgrade Pip
 sudo pip3.6 install --upgrade pip

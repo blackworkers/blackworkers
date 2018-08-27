@@ -1,4 +1,11 @@
+set -e
 
+checkUser () {
+  if [ ! `id -u bwadmin` ]; then
+    echo "User bwadmin does not exist, create this user and then rerun this script"
+    exit 1
+  fi
+}
 
 setup() {
   if [ ~/blackworkers/ ]; then
@@ -19,9 +26,9 @@ createDirectories () {
 }
 
 main() {
+  checkUser
   setup
   createDirectories
 }
 
 main
-
