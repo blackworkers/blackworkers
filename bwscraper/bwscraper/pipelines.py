@@ -52,7 +52,7 @@ class BwscraperPipeline(object):
             conn.commit()
             cur.close()
             conn.close()
-            print("############## ITEM HAS BEEN COMMITTED BY NOW")
+            print("[LOG] Row Successfully Inserted Into Database bw at ", etl_time)
         else:
             raise DropItem("DROPPING ITEM DUE TO MISSING LOCATION: %s" % item['loc_name'])
             cur.close()
