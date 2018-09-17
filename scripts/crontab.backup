@@ -1,3 +1,4 @@
 */5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackwork' >> /home/bwadmin/cron.log
 */5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackworkers' >> /home/bwadmin/cron.log
 */5 * * * *  cd /home/bwadmin/blackworkersapp/bwscraper &&scrapy crawl hashtag -a hashtag='blackworkerssubmission' >> /home/bwadmin/cron.log
+* */12 * * * psql -U postgres -d bw -f /home/bwadmin/blackworkersapp/db/app_etl.sql |  mail -s "App ETL Finished" signalfireaudio@gmail.com >/dev/null 2>&1
