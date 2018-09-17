@@ -3,14 +3,20 @@
 {% block content %}
   <h1>Artist List</h1>
   {% if artist_list %}
-  <ul>
+
     {% for artist in artist_list %}
-      <li>
-        <a href="{{ artist.get_absolute_url }}">{{ artist.instagram_handle }}</a> ({{artist.likes}})
-      </li>
+
+        {% if forloop.first %}<div class="row">{% endif %}
+        <div class="col square fillwidth" style="background-image: url({{ artist.display_url }}); background-size: cover;">
+
+                    <a href="{{ artist.get_absolute_url }}">{{ artist.instagram_handle }}</a> ({{artist.likes}})
+
+            </div>
+        {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+
     {% endfor %}
-  </ul>
+
   {% else %}
-    <p>There are no books in the library.</p>
+    <p>There are no artists here.</p>
   {% endif %}
 {% endblock %}

@@ -24,7 +24,7 @@ class ArtistListView(generic.ListView):
     model = ArtistsRaw
     context_object_name = 'artist_list'   # your own name for the list as a template variable
     queryset = ArtistsRaw.objects.order_by('-likes') # Get 5 books containing the title war
-    paginate_by = 10
+    paginate_by = 9
     #template_name = 'artists/artist_list.html'  # Specify your own template name/location
 
 class ArtistDetailView(generic.DetailView):
