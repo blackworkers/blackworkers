@@ -4,16 +4,18 @@ from django.urls import reverse
 # Create your models here.
 class ArtistsRaw(models.Model):
     """Model representing a book genre."""
-    instagram_handle = models.CharField(max_length=200, help_text='Enter an artists instagram handle')
-    caption = models.CharField(max_length=5000, help_text='Enter the artists post caption')
-    shortcode = models.CharField(max_length=200, help_text='Enter the posts shortcode')
-    city = models.CharField(max_length=200, help_text='Enter the artists city')
-    state = models.CharField(max_length=200, help_text='Enter the artists state')
-    likes = models.IntegerField()
-    display_url = models.URLField(max_length=500)
-
-    def get_absolute_url(self):
-        return reverse('artist-detail', args=[str(self.id)])
+    shortcode = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    caption = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    display_url = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    loc_name = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    loc_lat = models.IntegerField(default='0', null=True)
+    loc_long  = models.IntegerField(default='0', null=True)
+    instagram_handle = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    likes = models.IntegerField(default='0', null=True)
+    city = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    state = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    country = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
+    rejected = models.BooleanField(default=False, null=True)
 
 
     def __str__(self):
