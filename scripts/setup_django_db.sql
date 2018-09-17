@@ -1,3 +1,5 @@
+
+-- Invoke with `psql -U postgres -d bw -f setup_django_db.sql`
 CREATE DATABASE dj;
 
 CREATE USER django WITH PASSWORD 'django';
