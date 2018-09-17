@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Artist: {{ artist_detail.instagram_handle }}</h1>
+
+  <img src="{{ artist_detail.display_url }}" alt="Girl in a jacket">
+  <p><strong>Artist:</strong> <a href="">{{ artist_detail.instagram_handle }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Likes:</strong> {{ artist_detail.likes }}</p>
+  <p><strong>Caption:</strong> {{ artist_detail.caption }}</p>
+  <p><strong>State:</strong> {{ artist_detail.state }}</p>
+  <p><strong>Post:</strong> {{ artist_detail.display_url }}</p>
+
+
+{% endblock %}

@@ -12,6 +12,9 @@ class ArtistsRaw(models.Model):
     likes = models.IntegerField()
     display_url = models.URLField(max_length=500)
 
+    def get_absolute_url(self):
+        return reverse('artist-detail', args=[str(self.id)])
+
 
     def __str__(self):
         """String for representing the Model object."""
