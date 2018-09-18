@@ -16,6 +16,7 @@ class ArtistsRaw(models.Model):
     state = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
     country = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
     rejected = models.BooleanField(default=False, null=True)
+    taken_at_ts = models.DateTimeField(null=True)
 
 
     def __str__(self):

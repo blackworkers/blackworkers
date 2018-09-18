@@ -9,7 +9,8 @@ instagram_handle ,
 likes ,
 city ,
 state ,
-country)
+country,
+taken_at_ts)
 SELECT shortcode,
 caption,
 display_url,
@@ -20,7 +21,8 @@ instagram_handle,
 likes,
 city,
 state,
-country FROM staging.posts_filtered
+country,
+to_timestamp(taken_at_ts::int) AS taken_at_ts FROM staging.posts_filtered
 WHERE instagram_handle NOT IN (
 SELECT instagram_handle
     FROM public.artists_artistsraw
