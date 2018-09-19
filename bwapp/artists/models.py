@@ -22,3 +22,6 @@ class ArtistsRaw(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.instagram_handle
+
+    def get_absolute_url(self):
+        return reverse('artist-detail', args=[str(self.id)])
