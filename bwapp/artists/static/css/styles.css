@@ -101,9 +101,7 @@
 .photo {
   background-size: cover!important;
   background-position: center!important;
-  height: 100%;
-  width: auto;
-  display: block;
+
 }
 
 .no-padding {
@@ -113,4 +111,8 @@
 .photo-grid:hover {
   filter:brightness(50%);
   transition: all 0.5s ease;
+}
+
+.aspect-ratio-box {
+  height: 10000px!important;
 }

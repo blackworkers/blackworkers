@@ -7,9 +7,10 @@
     {% for artist in artist_list %}
 
         {% if forloop.first %}<div class="row">{% endif %}
-        <div class="col-4 photo-grid no-padding" style="background-image: url('{{ artist.display_url }}'); background-size: cover; ">
-          <div class="square">
-              <a class="photo " href="{{ artist.get_absolute_url }}"  title="photo" id="photo">{{ artist.instagram_handle }} ({{artist.likes}})</a>
+        <div class="col-4 photo-grid square" style="background-image: url('{{ artist.display_url }}'); ">
+
+          <div class="aspect-ratio-box"
+              <a href="{{ artist.get_absolute_url }}"  title="photo" id="photo">{{ artist.instagram_handle }} ({{artist.likes}})</a>
             </div>
           </div>
         {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
