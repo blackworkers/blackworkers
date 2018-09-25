@@ -118,13 +118,11 @@
 }
 
 .square:hover {
-  -moz-box-shadow:    inset 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0px 0px 10000px 50px #000000;
-   transition:all 0.1s ease;
+  display:block;
+  filter:opacity(50%);
 }
 
-span {
+h3 {
   padding-top:50%;
   padding-bottom:50%;
   text-align:center;
@@ -132,10 +130,5 @@ span {
   color:white;
   width:100%;
   filter: opacity(0%);
-}
-
-
-span:hover {
-  filter:opacity(100%);
-
+  font-size: 100px;
 }
