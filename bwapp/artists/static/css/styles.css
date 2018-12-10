@@ -124,7 +124,7 @@
    transition:all 0.1s ease;
 }
 
-span {
+.photo-text {
   padding-top:50%;
   padding-bottom:50%;
   text-align:center;
@@ -135,7 +135,11 @@ span {
 }
 
 
-span:hover {
+.photo-text:hover {
   filter:opacity(100%);
 
+}
+
+.pagination {
+  padding-top: 40px;
 }

@@ -15,7 +15,7 @@ class ArtistsRaw(models.Model):
     city = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
     state = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
     country = models.CharField(max_length=5000, help_text='Enter the artists post caption', blank=True, null=True)
-    rejected = models.BooleanField(default=False, null=True)
+    rejected = models.BooleanField(default=None, null=True)
     taken_at_ts = models.DateTimeField(null=True)
 
 
